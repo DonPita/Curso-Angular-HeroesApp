@@ -32,4 +32,9 @@ export class HeroesService {
       );
   }
 
+  //Autocomplete
+  getSuggestions(query: string): Observable<Hero[]> {
+    return this.hhtpClient.get<Hero[]>(`/heroes?q=${ query }&_limit=6`);
+  }
+
 }
