@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'heroes',
-    pathMatch: 'full'
+    pathMatch: 'full' //Se pone full el path vacio, por seguridad
   },
   {
     path: '**',

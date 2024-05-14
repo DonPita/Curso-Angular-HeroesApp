@@ -12,7 +12,8 @@ const routes: Routes = [
   {
     path: '',
     component: HeroLayoutPageComponent,
-    //Rutas hijas porque van despues del //localhost:4200/heroes/.....
+    /*Rutas hijas porque van despues del //localhost:4200/heroes/.....
+    No van en lazyload, porque el modulo entero ya va cargado asi*/
     children: [
       { path: 'new-hero', component: NewPageComponent },
       { path: 'search', component: SearchPageComponent },
