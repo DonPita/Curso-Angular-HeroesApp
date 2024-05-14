@@ -4,8 +4,9 @@
 
 1. Clonar el proyecto
 
-2. Ejercutar el ```npm install```
+2. Ejecutar el ```npm install```
 
 3. Levantar backend ```npm run backend```
+   que ejecuta ```json-server --watch data/db.json```
 
 4. Ejecutar la app ```npm start``` o bien ```ng serve -o```
