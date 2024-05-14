@@ -32,9 +32,9 @@ export class HeroesService {
       );
   }
 
-  //Autocomplete
+  //Autocomplete para usar en search-page.component
   getSuggestions(query: string): Observable<Hero[]> {
-    return this.hhtpClient.get<Hero[]>(`/heroes?q=${ query }&_limit=6`);
+    return this.hhtpClient.get<Hero[]>(`${this.baseUrl}/heroes?q=${query}&_limit=6`);
   }
 
 }
