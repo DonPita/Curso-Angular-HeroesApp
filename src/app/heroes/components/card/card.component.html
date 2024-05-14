@@ -6,7 +6,9 @@
     <mat-card-subtitle> {{ hero.alter_ego }} </mat-card-subtitle>
   </mat-card-header>
 
-  <!-- TODO: imagen-->
+  <!--Mandar la imagen por el Pipe personalizado HeroImage-->
+  <img mat-card-image [src]="hero | HeroImage" [alt]="hero.superhero">
+
   <!--Contenido de la tarjeta de texto-->
   <mat-card-content class="mt-2">
     <h4>{{ hero.publisher }}</h4>
