@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { delay, switchMap } from 'rxjs';
 import { Hero } from '../../interfaces/hero.interface';
 
 
@@ -20,16 +20,23 @@ export class HeroPageComponent implements OnInit {
     private router: Router
   ) { }
 
-  /**/
+  /*Uso del getHeroById de heroes.service para la correcta navegación entre
+  rutas del list-page y el hero-page, tramitando los posibles errores.*/
   ngOnInit(): void {
     this.activatedRoute.params
       .pipe(
-        switchMap(({ id }) => this.heroesService.gerHeroById(id)),
+        delay(1000),
+        switchMap(({ id }) => this.heroesService.getHeroById(id)),
       ).subscribe(hero => {
         if (!hero) return this.router.navigate(['/heroes/list']);
 
         this.hero = hero;
         return;
       })
+  }
+
+  //Metodo para el boton regresar en el hero-page
+  goBack():void {
+    this.router.navigateByUrl('heroes/list');
   }
 }

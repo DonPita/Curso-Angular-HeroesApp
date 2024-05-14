@@ -23,7 +23,7 @@ export class HeroesService {
 
   /*Para usar en el hero.page.component OnInit
   Undefined porque puede pasar un id que no exista*/
-  gerHeroById(id: string): Observable<Hero | undefined> {
+  getHeroById(id: string): Observable<Hero | undefined> {
 
     return this.hhtpClient.get<Hero>(`${this.baseUrl}/heroes/${id}`)
       //manejar el error de conseguir un id erroneo
