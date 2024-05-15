@@ -51,11 +51,12 @@ export class HeroesService {
 
   deleteHeroById(id: string): Observable<boolean> {
 
-    return this.hhtpClient.delete<Hero>(`${this.baseUrl}/heroes(${id})`)
+    return this.hhtpClient.delete<Hero>(`${this.baseUrl}/heroes/${id}`)
       .pipe(
+        map(resp => true),
         catchError(error => of(false)),
-        map(resp => true)
+
       );
-    /**/
+
   }
 }

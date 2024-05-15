@@ -57,14 +57,6 @@
       "characters": "Princess Diana"
     },
     {
-      "id": "dc-martian",
-      "superhero": "Martian Manhunter",
-      "publisher": "DC Comics",
-      "alter_ego": "J\"onn J\"onzz",
-      "first_appearance": "Detective Comics #225",
-      "characters": "Martian Manhunter"
-    },
-    {
       "id": "dc-robin",
       "superhero": "Robin/Nightwing",
       "publisher": "DC Comics",
@@ -167,15 +159,6 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
-    },
-    {
-      "id": "0JaUF1b",
-      "superhero": "Shin Chan",
-      "publisher": "DC Comics",
-      "alter_ego": "Porquiño Pirata",
-      "first_appearance": "no ventre da sua nai",
-      "characters": "Piroliña",
-      "alt_img": "https://ih1.redbubble.net/image.1651013965.7965/fpp,small,lustre,wall_texture,product,750x1000.jpg"
     }
   ]
 }

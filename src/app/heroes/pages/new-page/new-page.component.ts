@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
-import { switchMap } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs';
 import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
@@ -82,14 +82,29 @@ export class NewPageComponent implements OnInit {
       data: this.heroForm.value
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (!result) {
-        return;
-      }
+    dialogRef.afterClosed()
+      .pipe(
+        filter((result: boolean) => result),
+        switchMap(() => this.heroesService.deleteHeroById(this.currentHero.id)),
+        filter((wasDeleted: boolean) => wasDeleted),
+      )
+      .subscribe(() => {
+        this.router.navigate(['/heroes'])
+      })
 
-      this.heroesService.deleteHeroById(this.currentHero.id);
-      this.router.navigate(['/heroes/list']);
-    })
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (!result) {
+    //     return;
+    //   }
+
+    //   this.heroesService.deleteHeroById(this.currentHero.id)
+    //     .subscribe(wasDeleted => {
+    //       if (wasDeleted) {
+    //         this.router.navigate(['/heroes'])
+    //       }
+    //     })
+    // });
   }
 
   //Método para insertar el SnackBar
