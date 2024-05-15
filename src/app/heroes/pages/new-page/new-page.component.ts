@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
-import { subscribeOn } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-new-page',
@@ -10,9 +11,15 @@ import { subscribeOn } from 'rxjs';
   styles: ``
 })
 
-export class NewPageComponent {
+export class NewPageComponent implements OnInit {
 
-  constructor(private heroesService: HeroesService) { }
+  constructor(
+    private heroesService: HeroesService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+
+  ) { }
+
 
   //Creando el Formulario Reactivo, propiedades son la de la interface
   public heroForm = new FormGroup({
@@ -39,6 +46,28 @@ export class NewPageComponent {
   }
 
 
+  ngOnInit(): void {
+    /*Si no incluye edit en el URL el formulario queda vacio
+      Si incluye el edit, estamos editando, por tanto hay que agregar de
+      inicio los valores del superheroe a editar*/
+    if (!this.router.url.includes('edit')) {
+      return;
+    }
+
+    this.activatedRoute.params
+      .pipe(
+        switchMap(({ id }) => this.heroesService.getHeroById(id)),
+      ).subscribe(hero => {
+        if (!hero) {
+          return this.router.navigateByUrl('/');
+        }
+
+        this.heroForm.reset(hero);
+        return;
+      })
+
+  }
+
   onSubmit(): void {
     //Si no hay nada
     if (this.heroForm.invalid) {
@@ -56,7 +85,7 @@ export class NewPageComponent {
 
     //Si no tenemos un ID
     this.heroesService.addHero(this.currentHero)
-      .subscribe( hero => {
+      .subscribe(hero => {
         //TODO mostrar snackbar, y navegar a /heroes/edit hero.id
       })
 
