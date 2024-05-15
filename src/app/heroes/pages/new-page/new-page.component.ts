@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class NewPageComponent {
 
+  //Para en ngFor del creador en el html
+  public publishers = [
+    { id: 'DC Comics', desc: 'DC - Comics' },
+    { id: 'Marvel Comics', desc: 'Marvel - Comics' },
+  ]
 }
