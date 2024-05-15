@@ -52,7 +52,8 @@
         </form>
         <!--Parte de los botones-->
         <div class="flex justify-content-between">
-          <button *ngIf="currentHero.id" mat-flat-button color="warn">
+          <button *ngIf="currentHero.id" mat-flat-button color="warn"
+          (click)="onDeleteHero()">
             Borrar
           </button>
           <span></span> <!--Estetico, para colocar los botones-->

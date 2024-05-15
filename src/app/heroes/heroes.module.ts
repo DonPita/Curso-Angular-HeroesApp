@@ -13,6 +13,7 @@ import { NewPageComponent } from './pages/new-page/new-page.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { CardComponent } from './components/card/card.component';
 import { HeroImagePipe } from './pipes/heroImage.pipe';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 
 
@@ -27,7 +28,8 @@ import { HeroImagePipe } from './pipes/heroImage.pipe';
     CardComponent,
 
     //Pipes
-    HeroImagePipe
+    HeroImagePipe,
+      ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
