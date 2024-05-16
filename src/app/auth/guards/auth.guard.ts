@@ -11,7 +11,7 @@ import { inject } from '@angular/core';
 función flecha y exportándola podemos utilizar sus funcionalidades de guard
 en el app-routing*/
 
-const checkAuthStatus = (): Observable<boolean> => {
+export const checkAuthStatus = (): boolean | Observable<boolean> => {
 
   const authService: AuthService = inject(AuthService);
   const router: Router = inject(Router);
